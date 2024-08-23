@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   define: {
     'process.env': {
-      VITE_API_BASE_URL: process.env.VITE_API_BASE_URL || 'http://localhost:4040',
+      VITE_API_BASE_URL: process.env.CLIENT_URL || 'http://localhost:4040',
     },
 })
