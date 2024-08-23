@@ -22,7 +22,7 @@ export default function ChatPage() {
     }, []);
 
     function autoReconnect() {
-        const ws = new WebSocket('ws://localhost:4040');
+        const ws = new WebSocket('wss://instant-messaging-app-backend.onrender.com');
         setWs(ws);
         ws.addEventListener('message', handleMessage);
         ws.addEventListener('close', () => {
