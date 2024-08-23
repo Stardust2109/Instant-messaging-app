@@ -15,6 +15,7 @@ const UserModel = require('./models/UserModel');
 const Messages = require('./models/Messages');
 const ws = require('ws');
 
+const port = PROCESS.ENV.port || 4040;
 
 mongoose.connect(process.env.MONGO_URL);
 const app = express();
@@ -118,7 +119,7 @@ app.post('/register', async (req, res) => {
 
 });
 
-const server = app.listen(4040);
+const server = app.listen(port);
 //655WPuy72mr4wihH
 
 const wss = new ws.WebSocketServer({ server });
