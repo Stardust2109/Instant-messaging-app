@@ -6,7 +6,7 @@ import {UserContext, UserContextProvider} from "./UserContext.jsx";
 import Routes from './Routes.jsx';
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:4040";
+  axios.defaults.baseURL = "https://instant-messaging-app-backend.onrender.com";
   axios.defaults.withCredentials = true;
   
   return (
