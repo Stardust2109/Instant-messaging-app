@@ -15,7 +15,7 @@ const UserModel = require('./models/UserModel');
 const Messages = require('./models/Messages');
 const ws = require('ws');
 
-const port = PROCESS.ENV.port || 4040;
+const port = process.env.PORT || 4040;
 
 mongoose.connect(process.env.MONGO_URL);
 const app = express();
