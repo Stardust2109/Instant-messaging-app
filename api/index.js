@@ -21,8 +21,8 @@ mongoose.connect(process.env.MONGO_URL);
 const app = express();
 
 const fs = require('fs');
-const apiBaseUrl = import.meta.env.CLIENT_URL || 
-                   (import.meta.env.MODE === 'production' 
+const apiBaseUrl = process.env.CLIENT_URL || 
+                   (env.MODE === 'production' 
                    ? 'https://instant-messaging-app-backend.onrender.com' 
                    : 'http://localhost:4040');
 
