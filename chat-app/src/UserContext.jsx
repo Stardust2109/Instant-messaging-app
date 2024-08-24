@@ -12,7 +12,7 @@ export function UserContextProvider({children}){
 
     useEffect(() =>{
         try{
-            axios.get(`${import.meta.env.CLIENT_URL}/profile`).then(response => {
+            axios.get(`/profile`).then(response => {
             setId(response.data.userId);
             setUsername(response.data.username);
         })}
