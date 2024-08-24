@@ -33,7 +33,7 @@ app.use('/Attachments', express.static(__dirname + '/Attachments'));
 
 app.use(cors({
     credentials: true,
-    origin: process.env.CLIENT_URL,
+    origin: 'http://instant-messaging-app-frontend.onrender.com',
 }));
 
 
