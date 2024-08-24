@@ -15,7 +15,7 @@ export default function Register() {
 
     async function handleSubmit(ev) {
         ev.preventDefault();
-        const { data } = await axios.post(`${import.meta.env.CLIENT_URL}/` + newOrNot, { username, password });
+        const { data } = await axios.post(`/` + newOrNot, { username, password });
         setLoggedInUsername(username);
         setId(data.id);
     }
