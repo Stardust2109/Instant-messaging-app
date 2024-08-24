@@ -71,7 +71,7 @@ export default function ChatPage() {
         }))
 
         if (file) {
-            axios.get(`${import.meta.env.CLIENT_URL}/messages`).then(res => {
+            axios.get(`/messages`).then(res => {
                 setAllMessages(res.data);
             });
         }
@@ -88,7 +88,7 @@ export default function ChatPage() {
     }
 
     function logout() {
-        axios.get(`${import.meta.env.CLIENT_URL}/logout`).then(() => {
+        axios.get(`/logout`).then(() => {
             setId(null);
             setUsername(null);
             setWs(null);
@@ -116,7 +116,7 @@ export default function ChatPage() {
 
     useEffect(() => {
         if (selectedUser)
-            axios.get(`${import.meta.env.CLIENT_URL}/messages/` + selectedUser).then(res => {
+            axios.get(`/messages/` + selectedUser).then(res => {
                 
                 setAllMessages(res.data);
 
@@ -124,7 +124,7 @@ export default function ChatPage() {
     }, [selectedUser]);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.CLIENT_URL}/people`).then(res => {
+        axios.get(`/people`).then(res => {
             const offlineUsersArr = res.data
                 .filter(p => p._id !== id)
                 .filter(p => !Object.keys(uniqueOnline).includes(p._id));
