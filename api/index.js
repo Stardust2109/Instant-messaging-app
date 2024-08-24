@@ -66,7 +66,7 @@ app.get('/messages/:userId', async (req, res) => {
     res.json(userMessages);
 });
 
-app.get('/profile', (req, res) => {
+app.get('https://instant-messaging-app-backend.onrender.com/profile', (req, res) => {
     const token = req.cookies?.token;
     if (token) {
         jwt.verify(token, jwtSecret, {}, (err, userData) => {
@@ -79,16 +79,16 @@ app.get('/profile', (req, res) => {
     }
 });
 
-app.get('/test', (req, res) => {
+app.get('https://instant-messaging-app-backend.onrender.com/test', (req, res) => {
     res.json("Test OK");
 });
 
-app.get('/people', async (req, res)=>{
+app.get('https://instant-messaging-app-backend.onrender.com/people', async (req, res)=>{
     const users = await UserModel.find({}, {'_id':1, username: 1});
     res.json(users);
 });
 
-app.post('/login', async (req, res) => {
+app.post('https://instant-messaging-app-backend.onrender.com/login', async (req, res) => {
     const { username, password } = req.body;
     const foundUser = await UserModel.findOne({ username: username, password: password });
     if (foundUser) {
@@ -101,7 +101,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.post('/logout', (req, res)=>{
+app.post('https://instant-messaging-app-backend.onrender.com/logout', (req, res)=>{
     res.cookie('token', '', { sameSite: 'none', secure: true }).json('Ok');
 })
 
