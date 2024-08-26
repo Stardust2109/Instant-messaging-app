@@ -15,7 +15,7 @@ const UserModel = require('./models/UserModel');
 const Messages = require('./models/Messages');
 const ws = require('ws');
 
-const port = process.env.PORT || 4040;
+const port = process.env.PORT ? 'wss://instant-messaging-app-backend.onrender.com'|| 4040;
 
 mongoose.connect(process.env.MONGO_URL);
 const app = express();
@@ -66,7 +66,7 @@ app.get('/messages/:userId', async (req, res) => {
     res.json(userMessages);
 });
 
-app.get('https://instant-messaging-app-backend.onrender.com/profile', (req, res) => {
+app.get('/profile', (req, res) => {
     const token = req.cookies?.token;
     if (token) {
         jwt.verify(token, jwtSecret, {}, (err, userData) => {
@@ -79,16 +79,16 @@ app.get('https://instant-messaging-app-backend.onrender.com/profile', (req, res)
     }
 });
 
-app.get('https://instant-messaging-app-backend.onrender.com/test', (req, res) => {
+app.get('/test', (req, res) => {
     res.json("Test OK");
 });
 
-app.get('https://instant-messaging-app-backend.onrender.com/people', async (req, res)=>{
+app.get('/people', async (req, res)=>{
     const users = await UserModel.find({}, {'_id':1, username: 1});
     res.json(users);
 });
 
-app.post('https://instant-messaging-app-backend.onrender.com/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     const foundUser = await UserModel.findOne({ username: username, password: password });
     if (foundUser) {
@@ -101,7 +101,7 @@ app.post('https://instant-messaging-app-backend.onrender.com/login', async (req,
     }
 });
 
-app.post('https://instant-messaging-app-backend.onrender.com/logout', (req, res)=>{
+app.post('/logout', (req, res)=>{
     res.cookie('token', '', { sameSite: 'none', secure: true }).json('Ok');
 })
 
